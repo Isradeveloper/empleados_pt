@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from django.core.mail import send_mail
+
 from .models import User
 
 from django.urls import reverse_lazy, reverse
@@ -16,7 +18,9 @@ from django.views.generic import (
 
 from django.views.generic.edit import FormView 
 
-from .forms import UserRegisterForm, UserLoginForm, UpdatePasswordForm
+from .forms import UserRegisterForm, UserLoginForm, UpdatePasswordForm, VerificationForm
+
+from .functions import code_generator
 
 # Create your views here.
 
@@ -27,6 +31,8 @@ class UserRegisterView(FormView):
 
   def form_valid(self, form):
 
+    codigo = code_generator()
+
     User.objects.create_user(
       form.cleaned_data['username'],
       form.cleaned_data['email'],
@@ -35,7 +41,21 @@ class UserRegisterView(FormView):
       nombres = form.cleaned_data['nombres'],
       apellidos = form.cleaned_data['apellidos'],
       genero = form.cleaned_data['genero'],
+      cod_registro = codigo
     )
+
+    # # Correo
+    # asunto = 'Confirmación de cuenta'
+    # mensaje = f'Código de verificación {codigo}'
+    # email_remitente = 'pruebasisratrujillo@gmail.com'
+    # # 
+    # send_mail(asunto, mensaje, email_remitente, [form.cleaned_data['email'],])
+
+    # return HttpResponseRedirect(
+    #   reverse(
+    #     'users:verification'
+    #   )
+    # )
 
     return super().form_valid(form)
 
@@ -68,6 +88,11 @@ class UpdatePasswordView(LoginRequiredMixin,FormView):
   success_url = reverse_lazy('users:sign-in')
   login_url = reverse_lazy('users:sign-in')
 
+  def get_form_kwargs(self):
+    kwargs = super().get_form_kwargs()
+    kwargs['request'] = self.request
+    return kwargs
+
   def form_valid(self, form):
     usuario = self.request.user
     user = authenticate(
@@ -80,5 +105,15 @@ class UpdatePasswordView(LoginRequiredMixin,FormView):
       usuario.set_password(new_password)
       usuario.save()
       logout(self.request)
+
+    return super().form_valid(form)
+
+class VerificationView(FormView):
+  template_name = 'users/verification.html'
+  form_class = VerificationForm
+  success_url = reverse_lazy('users:sign-in')
+
+  def form_valid(self, form):
+
 
     return super().form_valid(form)

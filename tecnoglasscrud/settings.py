@@ -12,8 +12,15 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+import json
+import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+with open(os.path.join(BASE_DIR, 'tecnoglasscrud/settings.json')) as f:
+    secrets = json.loads(f.read())
 
 
 # Quick-start development settings - unsuitable for production
@@ -127,5 +134,12 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+
+# # Email settings
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp@gmail.com'
+# EMAIL_HOST_USER = secrets['EMAIL']
+# EMAIL_HOST_PASSWORD = secrets['EMAIL_PASSWORD']
+# EMAIL_PORT = 587
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

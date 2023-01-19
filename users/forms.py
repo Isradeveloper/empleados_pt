@@ -2,9 +2,8 @@ from django import forms
 
 from .models import User
 
-from django.http import request
-
 from django.contrib.auth import authenticate
+
 
 class UserRegisterForm(forms.ModelForm):
   """Form definition for UserRegister."""
@@ -121,6 +120,11 @@ class UserLoginForm(forms.Form):
     return username
 
 class UpdatePasswordForm(forms.Form):
+
+  def __init__(self, *args, **kwargs):
+    self.request = kwargs.pop('request', None)
+    super().__init__(*args, **kwargs)
+
   """UpdatePasswordForm definition."""
 
   # TODO: Define form fields here
@@ -157,15 +161,15 @@ class UpdatePasswordForm(forms.Form):
 
   def clean_oldpassword(self):
     oldpassword = self.cleaned_data.get('oldpassword')
-    # usuario = request.user
+    usuario = self.request.user
   
     # TODO Validation
 
     if (len(oldpassword) <= 5):
       self.add_error('oldpassword', 'La contraseña debe tener como mínimo 6 carácteres')
 
-    # if (not authenticate(username=usuario.username, password=oldpassword)):
-    #   self.add_error('oldpassword', 'Esta contraseña es incorrecta')
+    if (not authenticate(username=usuario.username, password=oldpassword)):
+      self.add_error('oldpassword', 'Esta contraseña es incorrecta')
 
     return oldpassword
 
@@ -193,6 +197,21 @@ class UpdatePasswordForm(forms.Form):
 
     return passwordrepeat
 
+class VerificationForm(forms.Form):
+  """VerificationForm definition."""
+
+  # TODO: Define form fields here
+
+  codigo = forms.CharField(max_length=6, required=True)
+
+  def clean_codigo(self):
+    codigo = self.cleaned_data.get('codigo')
+  
+  
+    # TODO Validation
+    if (len(codigo) < 6):
+      self.add_error('codigo', 'El código debe tener 6 carácteres')
+    return codigo
   
   
 
