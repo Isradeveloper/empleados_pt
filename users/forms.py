@@ -58,3 +58,25 @@ class UserRegisterForm(forms.ModelForm):
     if (len(password) <= 5):
       self.add_error('password', 'La contraseña debe tener cómo mínimo 6 carácteres')
     return password
+
+class UserLoginForm(forms.Form):
+  """UserLoginForm definition."""
+
+  # TODO: Define form fields here
+  username = forms.CharField(
+    max_length=10,
+    required=True,
+    label='Nombre de usuario',
+    widget=forms.TextInput({
+      'placeholder': 'username'
+    })
+  )
+
+  password = forms.CharField(
+    required=True,
+    label='Contraseña',
+    widget=forms.PasswordInput({
+      'placeholder': 'password'
+    })
+  )
+
