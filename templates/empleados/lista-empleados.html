@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Listar empleados
+{% endblock title %} {% block body %} {% include 'includes/nav.html' %}
+<div class="contenedor">
+  <span class="titulo-main">Listar empleados</span>
+  <div class="container-fluid">
+    <div class="table-responsive">
+      <table class="table table-striped text-center bordered" id="example">
+        <thead>
+          <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">Nombres</th>
+            <th class="text-center">Apellidos</th>
+            <th class="text-center">Cédula</th>
+            <th class="text-center">Correo eléctronico</th>
+            <th class="text-center">Télefono</th>
+            <th class="text-center">Fecha de nacimiento</th>
+            <th class="text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for empleado in empleados %}
+          <tr>
+            <td>{{empleado.id}}</td>
+            <td>{{empleado.nombres}}</td>
+            <td>{{empleado.apellidos}}</td>
+            <td>{{empleado.cedula}}</td>
+            <td>{{empleado.email}}</td>
+            <td>{{empleado.telefono}}</td>
+            <td>{{empleado.fecha_nacimiento}}</td>
+            <td><button class="btn acciones">Ver</button></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock body %}

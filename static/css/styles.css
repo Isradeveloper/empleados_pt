@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: whitesmoke;
+  height: 100vh;
+  width: 100vw;
+}
+
+#cerrar-sesion {
+  background-color: rgba(245, 90, 90, 0.695);
+}
+
+.nav {
+  background-color: #22007c !important;
+  height: 4rem;
+}
+
+.drop {
+  background-color: whitesmoke !important;
+}
+
+.contenedor {
+  padding: 2rem;
+  width: 100%;
+  height: calc(100% - 4rem);
+}
+
+.titulo-main {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+#tabla_empleados_filter {
+  padding: 3rem;
+}
+
+.table.dataTable thead>tr>th.sorting_asc:before, table.dataTable thead>tr>th.sorting_desc:after, table.dataTable thead>tr>td.sorting_asc:before, table.dataTable thead>tr>td.sorting_desc:after {
+  color: #0d00a4;
+}
+
+.form-control:focus {
+  border-color: #22007c;
+  box-shadow: 0 0 0 0.2rem rgba(55, 40, 167, 0.25);
+}
+
+.active>.page-link {
+  background-color: #22007c;
+  border: #1b045d;
+}
+
+.active>.page-link:focus {
+  border-color: #22007c;
+  box-shadow: 0 0 0 0.2rem rgba(55, 40, 167, 0.25);
+}
+
+.active>.page-link:hover {
+  color: whitesmoke;
+}
+
+.page-link {
+  color: #22007c;
+}
+
+.page-link:hover {
+  color: #22007c;
+}
+
+.page-link:focus {
+  border-color: #22007c;
+  box-shadow: 0 0 0 0.2rem rgba(55, 40, 167, 0.25);
+}
+
+.acciones {
+  background-color: #e36a00;
+  color: whitesmoke;
+  width: 90%;
+}
+
+
+

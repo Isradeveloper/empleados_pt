@@ -49,6 +49,8 @@ DJANGO_APPS = (
 
 LOCAL_APPS = (
     'users',
+    'home',
+    'empleados'
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS

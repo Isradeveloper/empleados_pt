@@ -7,8 +7,8 @@
 
 
 {% block body %}
+  {% include 'includes/nav.html' %}
   <h1>Bienvenido {{user.get_username}}</h1>
-  <a href="{% url 'users:logout' %}">Cerrar sesión</a>
 {% endblock body %}
   
   
