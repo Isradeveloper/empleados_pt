@@ -2,12 +2,15 @@ from django.shortcuts import render
 
 from .models import User
 
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+
+from django.http import HttpResponseRedirect
 
 from django.views.generic import (
-  CreateView
+  CreateView,
+  View
 )
 
 from django.views.generic.edit import FormView 
@@ -50,3 +53,10 @@ class UserLoginView(FormView):
     login(self.request, user)
 
     return super().form_valid(form)
+
+class UserLogout(View):
+  def get(self, request, *args, **kargs):
+    logout(request)
+    return HttpResponseRedirect(
+      reverse('users:sign-in')
+    )
