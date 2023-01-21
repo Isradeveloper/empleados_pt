@@ -13,7 +13,8 @@ class UserRegisterForm(forms.ModelForm):
     label='Contraseña',
     widget=forms.PasswordInput(
       attrs={
-        'placeholder': 'Contraseña'
+        'placeholder': 'Contraseña',
+        'class': 'form-control'
       }
     )
   )
@@ -72,6 +73,8 @@ class UserRegisterForm(forms.ModelForm):
 
 class UserLoginForm(forms.Form):
   """UserLoginForm definition."""
+
+  error_css_class = 'pruebaa'
 
   # TODO: Define form fields here
   username = forms.CharField(

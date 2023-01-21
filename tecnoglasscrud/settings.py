@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-7b2ez*y49__n6z-q%da_2n73vhg-%)41g(_fqbhqp@ia0wa95@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -91,8 +91,12 @@ WSGI_APPLICATION = 'tecnoglasscrud.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'bd_project_empleados',
+        'USER': 'postgres',
+        'PASSWORD': '1014',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -148,3 +152,5 @@ STATICFILES_DIRS = [
 # EMAIL_PORT = 587
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = ''

@@ -77,5 +77,25 @@ body {
   width: 90%;
 }
 
+.pop-up {
+  background-color: red;
+  width: 50%;
+  height: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#edit-icon {
+  width: 0.9rem;
+  height: 0.9rem;
+  fill: #f5f5f5;
+}
+
+#delete-icon {
+  width: 0.9rem;
+  height: 0.9rem;
+  fill: #f5f5f5;
+}
 
 
