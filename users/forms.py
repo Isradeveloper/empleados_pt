@@ -129,6 +129,77 @@ class UserRegisterForm(forms.ModelForm):
   
     return apellidos
 
+class UserUpdateForm(forms.ModelForm):
+  """Form definition for UserRegister."""
+
+  class Meta:
+    """Meta definition for UserRegisterform."""
+
+    model = User
+    fields = (
+      'username',
+      'email',
+      'nombres',
+      'apellidos',
+      'genero',
+    )
+
+    widgets = {
+    'username': forms.TextInput({
+      'class': 'form-control my-2',
+      'placeholder': 'Ingresa el nombre de usuario'
+    }),
+    'email': forms.EmailInput({
+      'class': 'form-control my-2',
+      'placeholder': 'Ingresa tu email'
+    }),
+    'nombres': forms.TextInput({
+      'class': 'form-control my-2',
+      'placeholder': 'Ingresa tus nombres'
+    }),
+    'apellidos': forms.TextInput({
+      'class': 'form-control my-2',
+      'placeholder': 'Ingresa tus apellidos'
+    }),
+    'genero': forms.Select({
+      'class': 'form-control my-2',
+    })
+  }
+
+  
+  def clean_username(self):
+    username = self.cleaned_data.get('username')
+  
+    # TODO Validation
+    if (len(username) <= 2):
+      self.add_error('username', 'El username debe tener como mínimo 3 carácteres')
+  
+    return username
+
+  def clean_nombres(self):
+    nombres = self.cleaned_data.get('nombres')
+    expresion_regular =  "^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
+
+    if (len(nombres) < 3):
+      self.add_error('nombres', 'El nombre debe tener más de 2 carácteres')
+
+    if (match_string(nombres, expresion_regular)) == False:
+      self.add_error('nombres', 'El nombre sólo debe contener letras')
+  
+    return nombres
+
+  def clean_apellidos(self):
+    apellidos = self.cleaned_data.get('apellidos')
+    expresion_regular =  "^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
+
+    if (len(apellidos) < 3):
+      self.add_error('apellidos', 'El apellido debe tener más de 2 carácteres')
+
+    if (match_string(apellidos, expresion_regular)) == False:
+      self.add_error('apellidos', 'El apellido sólo debe contener letras')
+  
+    return apellidos
+
 
 class UserLoginForm(forms.Form):
   """UserLoginForm definition."""
@@ -200,6 +271,7 @@ class UpdatePasswordForm(forms.Form):
     label='Contraseña actual',
     widget=forms.PasswordInput(
       attrs={
+        'class': 'form-control my-2',
         'placeholder': 'Contraseña actual'
       }
     )
@@ -210,6 +282,7 @@ class UpdatePasswordForm(forms.Form):
     label='Contraseña nueva',
     widget=forms.PasswordInput(
       attrs={
+        'class': 'form-control my-2',
         'placeholder': 'Contraseña nueva'
       }
     )
@@ -220,6 +293,7 @@ class UpdatePasswordForm(forms.Form):
     label='Repita la contraseña',
     widget=forms.PasswordInput(
       attrs={
+        'class': 'form-control my-2',
         'placeholder': 'Repita contraseña nueva'
       }
     )
@@ -263,22 +337,5 @@ class UpdatePasswordForm(forms.Form):
 
     return passwordrepeat
 
-class VerificationForm(forms.Form):
-  """VerificationForm definition."""
-
-  # TODO: Define form fields here
-
-  codigo = forms.CharField(max_length=6, required=True)
-
-  def clean_codigo(self):
-    codigo = self.cleaned_data.get('codigo')
-  
-  
-    # TODO Validation
-    if (len(codigo) < 6):
-      self.add_error('codigo', 'El código debe tener 6 carácteres')
-    return codigo
-  
-  
 
 

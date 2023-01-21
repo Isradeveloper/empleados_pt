@@ -13,12 +13,13 @@ from django.http import HttpResponseRedirect
 
 from django.views.generic import (
   CreateView,
-  View
+  View,
+  UpdateView
 )
 
-from django.views.generic.edit import FormView 
+from django.views.generic.edit import FormView
 
-from .forms import UserRegisterForm, UserLoginForm, UpdatePasswordForm, VerificationForm
+from .forms import UserRegisterForm, UserLoginForm, UpdatePasswordForm, UserUpdateForm
 
 from .functions import code_generator
 
@@ -83,7 +84,7 @@ class UserLogout(View):
     )
 
 class UpdatePasswordView(LoginRequiredMixin,FormView):
-  template_name = 'users/update-password.html'
+  template_name = 'users/change-password.html'
   form_class = UpdatePasswordForm
   success_url = reverse_lazy('users:sign-in')
   login_url = reverse_lazy('users:sign-in')
@@ -108,12 +109,15 @@ class UpdatePasswordView(LoginRequiredMixin,FormView):
 
     return super().form_valid(form)
 
-class VerificationView(FormView):
-  template_name = 'users/verification.html'
-  form_class = VerificationForm
-  success_url = reverse_lazy('users:sign-in')
-
-  def form_valid(self, form):
-
-
-    return super().form_valid(form)
+class UserUpdateView(LoginRequiredMixin ,UpdateView):
+    model = User
+    form_class = UserUpdateForm
+    template_name = "users/edit-user.html"
+    success_url = reverse_lazy('home:panel')
+    login_url = reverse_lazy('users:sign-in')
+    
+    def get_context_data(self, **kwargs):
+        context = super(UserUpdateView, self).get_context_data(**kwargs)
+        context['user'] = self.get_object()
+        context['form'] = self.get_form()
+        return context

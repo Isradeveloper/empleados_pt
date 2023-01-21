@@ -43,7 +43,7 @@
                 Perfil
               </a>
               <ul class="dropdown-menu drop" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Actualizar datos</a></li>
+                <li><a class="dropdown-item" href="{% url 'users:edit-user' user.id %}">Actualizar datos</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="{% url 'users:update-password' %}">Cambiar contraseña</a></li>
                 <li><hr class="dropdown-divider"></li>

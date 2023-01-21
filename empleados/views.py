@@ -23,7 +23,6 @@ class EmpleadosUpdateView(LoginRequiredMixin ,UpdateView):
     model = Empleado
     form_class = UpdateEmpleadoForm
     template_name = "empleados/edit-empleado.html"
-    context_object_name = 'empleados:editar-empleados'
     success_url = reverse_lazy('empleados:listar-empleados')
     login_url = reverse_lazy('users:sign-in')
     
