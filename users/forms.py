@@ -4,6 +4,13 @@ from .models import User
 
 from django.contrib.auth import authenticate
 
+import re
+
+def match_string(cadena, expresion_regular):
+    if re.search(expresion_regular, cadena):
+        return True
+    else:
+        return False
 
 class UserRegisterForm(forms.ModelForm):
   """Form definition for UserRegister."""
@@ -13,8 +20,9 @@ class UserRegisterForm(forms.ModelForm):
     label='Contraseña',
     widget=forms.PasswordInput(
       attrs={
-        'placeholder': 'Contraseña',
-        'class': 'form-control'
+        'class': 'form-control my-2',
+        'id': 'floatingInput',
+        'placeholder': 'Ingresa la contraseña'
       }
     )
   )
@@ -24,7 +32,9 @@ class UserRegisterForm(forms.ModelForm):
     label='Repita la contraseña',
     widget=forms.PasswordInput(
       attrs={
-        'placeholder': 'Repetir contraseña'
+        'class': 'form-control my-2',
+        'id': 'floatingInput',
+        'placeholder': 'Repite la contraseña'
       }
     )
   )
@@ -40,6 +50,30 @@ class UserRegisterForm(forms.ModelForm):
       'apellidos',
       'genero',
     )
+
+    widgets = {
+    'username': forms.TextInput({
+      'class': 'form-control my-2',
+      'placeholder': 'Ingresa el nombre de usuario'
+    }),
+    'email': forms.EmailInput({
+      'class': 'form-control my-2',
+      'placeholder': 'Ingresa tu email'
+    }),
+    'nombres': forms.TextInput({
+      'class': 'form-control my-2',
+      'placeholder': 'Ingresa tus nombres'
+    }),
+    'apellidos': forms.TextInput({
+      'class': 'form-control my-2',
+      'placeholder': 'Ingresa tus apellidos'
+    }),
+    'genero': forms.Select({
+      'class': 'form-control my-2',
+    })
+  }
+
+  
   
   def clean_passwordrepeat(self):
     passwordrepeat = self.cleaned_data.get('passwordrepeat')
@@ -71,10 +105,33 @@ class UserRegisterForm(forms.ModelForm):
   
     return username
 
+  def clean_nombres(self):
+    nombres = self.cleaned_data.get('nombres')
+    expresion_regular =  "^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
+
+    if (len(nombres) < 3):
+      self.add_error('nombres', 'El nombre debe tener más de 2 carácteres')
+
+    if (match_string(nombres, expresion_regular)) == False:
+      self.add_error('nombres', 'El nombre sólo debe contener letras')
+  
+    return nombres
+
+  def clean_apellidos(self):
+    apellidos = self.cleaned_data.get('apellidos')
+    expresion_regular =  "^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
+
+    if (len(apellidos) < 3):
+      self.add_error('apellidos', 'El apellido debe tener más de 2 carácteres')
+
+    if (match_string(apellidos, expresion_regular)) == False:
+      self.add_error('apellidos', 'El apellido sólo debe contener letras')
+  
+    return apellidos
+
+
 class UserLoginForm(forms.Form):
   """UserLoginForm definition."""
-
-  error_css_class = 'pruebaa'
 
   # TODO: Define form fields here
   username = forms.CharField(
@@ -82,7 +139,10 @@ class UserLoginForm(forms.Form):
     required=True,
     label='Nombre de usuario',
     widget=forms.TextInput({
-      'placeholder': 'username'
+      'class': 'form-control my-2',
+        'id': 'floatingInput',
+        'placeholder': 'Ingresa nombre de usuario',
+        'autocomplete': 'off'
     })
   )
 
@@ -90,7 +150,10 @@ class UserLoginForm(forms.Form):
     required=True,
     label='Contraseña',
     widget=forms.PasswordInput({
-      'placeholder': 'password'
+      'class': 'form-control my-2',
+        'id': 'floatingInput',
+        'placeholder': 'Ingresa contraseña',
+        'autocomplete': 'off'
     })
   )
 

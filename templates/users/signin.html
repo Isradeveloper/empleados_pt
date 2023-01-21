@@ -1,20 +1,35 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% block title %} Iniciar sesión {% endblock title %}
+{% block extra %}
+<script>
+  $(".errorlist").addClass("alert alert-danger");
 
+  const enviarform = () => {
+    $('#enviar').click()
+  }
 
-{% block title %}
-  Sign in  
-{% endblock title %}
-
-
-{% block body %}
-  <div class="contenedor d-flex justify-content-center align-items-center">
-    <div class="pop-up">
-      <form method="POST" id="loginForm"> {% csrf_token %}
-        {{form.as_p}}
-        <button type="submit">Iniciar sesión</button>
+</script>
+{% endblock extra %} {% block body %}
+<div class="contenedor-login">
+  <div class="container d-flex justify-content-center align-items-center" style="height: calc(100% - 4rem);">
+    <div class="animate__animated animate__backInLeft card w-50 p-4">
+      <div class="header mb-3">
+        <div class="titulo-main">Iniciar sesión</div>
+      </div>
+        <form method="post"> {% csrf_token %}
+        {{form}}
+        <button type="submit" id="enviar" class="d-none"></button>
       </form>
+      <div class="register d-flex w-100 justify-content-end">
+        <div class="d-flex flex-column justify-content-start align-items-center mt-2">
+          <span>¿No tienes un usuario?</span>
+          <a href="{% url 'users:sign-up' %}" class="w-100 text-center">Regístrate aquí</a>
+        </div>
+      </div>
+      <hr>
+      <div class="d-flex justify-content-center align-items-center gap-2 flex-column w-100">
+        <button type="submit" class="btn purple w-100" onclick="(enviarform())">Iniciar sesión</button>
+      </div>
     </div>
   </div>
+</div>
 {% endblock body %}
-  

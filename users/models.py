@@ -14,10 +14,10 @@ GENDER_CHOICES = (
 
 class User(AbstractBaseUser, PermissionsMixin): 
   username = models.CharField(max_length=10, unique=True, blank=False)
-  email = models.EmailField(max_length=254, blank=False)
+  email = models.EmailField(max_length=254, blank=False, unique=True)
   nombres = models.CharField(max_length=50, blank=True)
   apellidos = models.CharField(max_length=50, blank=True)
-  genero = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True)
+  genero = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=False)
   cod_registro = models.CharField(max_length=6, blank=True)
   is_staff = models.BooleanField(default=False)
   is_active = models.BooleanField(default=True)
