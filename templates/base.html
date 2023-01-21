@@ -15,6 +15,11 @@
       crossorigin="anonymous"
     />
 
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+
     <!-- STATIC CSS -->
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
 
@@ -45,33 +50,13 @@
       src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"
     ></script>
 
-    <script>
-      $(document).ready(function () {
-        var table = $("#example").DataTable({
-          language: {
-            url: "//cdn.datatables.net/plug-ins/1.13.1/i18n/es-ES.json",
-          },
-          paging: true,
-          pageLength: 10,
-          lengthChange: true,
-          autoWidth: true,
-          searching: true,
-          bInfo: true,
-          bSort: true,
-          orderCellsTop: true,
-          fixedHeader: true,
-          columnDefs: [{ orderable: false, targets: 7 }],
-          responsive: true,
-        });
-      });
-    </script>
+   
 
-    <script>
-      const abrir_modal_visualizacion = (url) => {
-        $('#visualizar').load(url, function(){
-          $(this).modal('show')
-        });
-      }
-    </script>
+
+{% block extra %}
+  
+{% endblock extra %}
+  
+
   </body>
 </html>

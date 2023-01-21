@@ -25,6 +25,13 @@ class EmpleadosDetailView(UpdateView):
     template_name = "empleados/edit-empleado.html"
     context_object_name = 'empleados:editar-empleados'
     success_url = reverse_lazy('empleados:listar-empleados')
+    
+    def get_context_data(self, **kwargs):
+        context = super(EmpleadosDetailView, self).get_context_data(**kwargs)
+        context['empleado'] = self.get_object()
+        context['form'] = self.get_form()
+        return context
+    
 
 
 

@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&display=swap");
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   background-color: whitesmoke;
   height: 100vh;
   width: 100vw;
@@ -24,6 +24,7 @@ body {
   padding: 2rem;
   width: 100%;
   height: calc(100% - 4rem);
+  background: #f5f5f5;
 }
 
 .titulo-main {
@@ -35,26 +36,38 @@ body {
   padding: 3rem;
 }
 
-.table.dataTable thead>tr>th.sorting_asc:before, table.dataTable thead>tr>th.sorting_desc:after, table.dataTable thead>tr>td.sorting_asc:before, table.dataTable thead>tr>td.sorting_desc:after {
+.table.dataTable thead > tr > th.sorting_asc:before,
+table.dataTable thead > tr > th.sorting_desc:after,
+table.dataTable thead > tr > td.sorting_asc:before,
+table.dataTable thead > tr > td.sorting_desc:after {
   color: #0d00a4;
 }
 
 .form-control:focus {
   border-color: #22007c;
   box-shadow: 0 0 0 0.2rem rgba(55, 40, 167, 0.25);
+  color: #160347;
 }
 
-.active>.page-link {
+.form-control {
+  color: #160347;
+}
+
+label {
+  font-weight: 600;
+}
+
+.active > .page-link {
   background-color: #22007c;
   border: #1b045d;
 }
 
-.active>.page-link:focus {
+.active > .page-link:focus {
   border-color: #22007c;
   box-shadow: 0 0 0 0.2rem rgba(55, 40, 167, 0.25);
 }
 
-.active>.page-link:hover {
+.active > .page-link:hover {
   color: whitesmoke;
 }
 
@@ -98,4 +111,35 @@ body {
   fill: #f5f5f5;
 }
 
+.errorlist {
+  list-style: none;
+}
+
+.card {
+  color: #1b045d;
+  box-shadow: 20px 20px 60px #d0d0d0, -20px -20px 60px #ffffff;
+  border-radius: 1rem;
+}
+
+.purple {
+  background-color: #22007c;
+  color: whitesmoke;
+  font-weight: 600;
+}
+
+.purple:hover {
+  background-color: #2f079f;
+  color: whitesmoke;
+}
+
+.purple-n {
+  background-color: #7c0600;
+  color: whitesmoke;
+  font-weight: 600;
+}
+
+.purple-n:hover {
+  background-color: #c21208;
+  color: whitesmoke;
+}
 
