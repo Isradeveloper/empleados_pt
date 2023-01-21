@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from django.views.generic import (
-  ListView, UpdateView
+  ListView, UpdateView, DeleteView
 )
 
 from .models import Empleado
@@ -19,7 +19,7 @@ class EmpleadosListView(LoginRequiredMixin ,ListView):
     login_url = reverse_lazy('users:sign-in')
 
 
-class EmpleadosDetailView(UpdateView):
+class EmpleadosUpdateView(UpdateView):
     model = Empleado
     form_class = UpdateEmpleadoForm
     template_name = "empleados/edit-empleado.html"
@@ -27,11 +27,17 @@ class EmpleadosDetailView(UpdateView):
     success_url = reverse_lazy('empleados:listar-empleados')
     
     def get_context_data(self, **kwargs):
-        context = super(EmpleadosDetailView, self).get_context_data(**kwargs)
+        context = super(EmpleadosUpdateView, self).get_context_data(**kwargs)
         context['empleado'] = self.get_object()
         context['form'] = self.get_form()
         return context
-    
+
+
+class EmpleadosDeleteView(DeleteView):
+    model = Empleado
+    template_name = "empleados/delete-empleado.html"
+    context_object_name = 'empleado'
+
 
 
 

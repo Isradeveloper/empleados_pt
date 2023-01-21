@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block title %} Editar empleado {% endblock title %}
+{% block extra %}
+<script>
+  $(".errorlist").addClass("alert alert-danger");
+  const fecha = $('[name=fecha_nacimiento]')
+
+  const enviarform = () => {
+    $('#enviar').click()
+  }
+
+</script>
+{% endblock extra %} {% block body %} {% include 'includes/nav.html' %}
+<div class="contenedor">
+  <div class="container d-flex justify-content-center align-items-center" style="height: calc(100% - 4rem);">
+    <div class="animate__animated animate__backInLeft card w-50 p-4">
+      <div class="header mb-3">
+        <div class="titulo-main">Eliminar empleado</div>
+      </div>
+        <form method="post"> {% csrf_token %}
+          <div>¿Está seguro que desea eliminar al empleado {{empleado.nombres}} {{empleado.apellidos}}</div>
+        <button type="submit" id="enviar" class="d-none"></button>
+      </form>
+      <hr>
+      <div class="d-flex justify-content-center align-items-center gap-2 flex-column w-100">
+        <button type="submit" class="btn purple w-100" onclick="(enviarform())">Eliminar</button>
+        <a type="submit" class="btn purple-n w-100" href="{% url 'empleados:listar-empleados' %}">Cancelar</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock body %}

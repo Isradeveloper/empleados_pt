@@ -59,7 +59,7 @@
                 <a
                   id="edit_modal"
                   class="btn btn-primary"
-                  href="{% url 'empleados:editar-empleados' empleado.id %}"
+                  href="{% url 'empleados:editar-empleado' empleado.id %}"
                 >
                   <svg
                     id="edit-icon"
@@ -72,7 +72,7 @@
                     />
                   </svg>
                 </a>
-                <button class="btn btn-danger">
+                <a class="btn btn-danger" href="{% url 'empleados:eliminar-empleado' empleado.id %}">
                   <svg id="delete-icon"
                     xmlns="http://www.w3.org/2000/svg"
                     class="bi bi-trash-fill"
@@ -82,7 +82,7 @@
                       d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
                     />
                   </svg>
-                </button>
+                </a>
               </div>
             </td>
           </tr>
@@ -91,6 +91,11 @@
       </table>
     </div>
   </div>
+  <a class="add">
+    <svg xmlns="http://www.w3.org/2000/svg" id="add-icon" class="bi bi-plus-lg" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+    </svg>
+  </a>
 </div>
 
 <div class="modal fade" id="visualizar" role="dialog"></div>
