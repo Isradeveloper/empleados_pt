@@ -9,7 +9,7 @@ class Empleado(models.Model):
   nombres = models.CharField(max_length=50, blank=False)
   apellidos = models.CharField(max_length=50, blank=False)
   cedula = models.IntegerField(blank=False)
-  email = models.EmailField(max_length=254, blank=False)
+  email = models.EmailField(blank=False, unique=True)
   fecha_nacimiento = models.DateField(auto_now=False, auto_now_add=False, blank=False)
   telefono = models.IntegerField(blank=False)
 
