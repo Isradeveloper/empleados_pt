@@ -1,0 +1,257 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600&display=swap");
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: whitesmoke;
+  height: 100vh;
+  width: 100vw;
+}
+
+#cerrar-sesion {
+  background-color: rgba(245, 90, 90, 0.695);
+}
+
+.nav {
+  background-color: #22007c !important;
+  height: 4rem;
+}
+
+.drop {
+  background-color: whitesmoke !important;
+}
+
+.contenedor {
+  padding: 2rem;
+  width: 100%;
+  height: calc(100% - 4rem);
+  background: #f5f5f5;
+}
+
+.contenedor-login {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(160deg, #1104599a 0%, #03055e 100%),
+    url("https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.contenedor-forms {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(160deg, #1104599a 0%, #03055e 100%),
+    url("https://images.pexels.com/photos/955389/pexels-photo-955389.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.contenedor-list {
+  padding: 2rem;
+  width: 100%;
+  height: calc(100% - 4rem);
+  background-image: linear-gradient(160deg, #1104599a 0%, #03055e 100%),
+    url("https://images.pexels.com/photos/164686/pexels-photo-164686.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.titulo-main {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+#tabla_empleados_filter {
+  padding: 3rem;
+}
+
+.table.dataTable thead > tr > th.sorting_asc:before,
+table.dataTable thead > tr > th.sorting_desc:after,
+table.dataTable thead > tr > td.sorting_asc:before,
+table.dataTable thead > tr > td.sorting_desc:after {
+  color: #0d00a4;
+}
+
+.form-control:focus {
+  border-color: #22007c;
+  box-shadow: 0 0 0 0.2rem rgba(55, 40, 167, 0.25);
+  color: #160347;
+}
+
+.form-control {
+  color: #160347;
+}
+
+label {
+  font-weight: 600;
+}
+
+.active > .page-link {
+  background-color: #22007c;
+  border: #1b045d;
+}
+
+.active > .page-link:focus {
+  border-color: #22007c;
+  box-shadow: 0 0 0 0.2rem rgba(55, 40, 167, 0.25);
+}
+
+.active > .page-link:hover {
+  color: whitesmoke;
+}
+
+.page-link {
+  color: #22007c;
+}
+
+.page-link:hover {
+  color: #22007c;
+}
+
+.page-link:focus {
+  border-color: #22007c;
+  box-shadow: 0 0 0 0.2rem rgba(55, 40, 167, 0.25);
+}
+
+.acciones {
+  background-color: #e36a00;
+  color: whitesmoke;
+  width: 90%;
+}
+
+.pop-up {
+  background-color: red;
+  width: 50%;
+  height: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#edit-icon {
+  width: 0.9rem;
+  height: 0.9rem;
+  fill: #f5f5f5;
+}
+
+#delete-icon {
+  width: 0.9rem;
+  height: 0.9rem;
+  fill: #f5f5f5;
+}
+
+.errorlist {
+  list-style: none;
+}
+
+.card {
+  color: #1b045d;
+  box-shadow: 20px 20px 60px #d0d0d0, -20px -20px 60px #ffffff;
+  border-radius: 1rem;
+}
+
+.contenedor-login .card {
+  color: #1b045d;
+  box-shadow: none;
+  border-radius: 1rem;
+}
+
+.contenedor-list .card {
+  color: #1b045d;
+  box-shadow: none;
+  border-radius: 1rem;
+}
+
+.dropdown-item:focus {
+  background-color: #160347;
+}
+
+.contenedor-forms .card {
+  color: #1b045d;
+  box-shadow: none;
+  border-radius: 1rem;
+}
+
+.purple {
+  background-color: #22007c;
+  color: whitesmoke;
+  font-weight: 600;
+}
+
+.purple:hover {
+  background-color: #2f079f;
+  color: whitesmoke;
+}
+
+.purple-n {
+  background-color: #7c0600;
+  color: whitesmoke;
+  font-weight: 600;
+}
+
+.purple-n:hover {
+  background-color: #c21208;
+  color: whitesmoke;
+}
+
+#add-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  fill: #f5f5f5;
+}
+
+.add {
+  background-color: #0746a3;
+  border-radius: 100%;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  transition: all 0.4s;
+}
+
+.add:hover {
+  background-color: #0d6efd;
+  cursor: pointer;
+}
+
+.carousel-inner {
+  height: calc(100vh - 4rem);
+  width: 100%;
+}
+
+.carousel-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.container-fluid.card {
+  padding: 1rem;
+}
+
+.dataTables_filter {
+  padding: 0.5rem;
+}
+
+.input-group-addon.input-group-append.input-group-text {
+  background-color: #160347;
+  color: whitesmoke;
+}
+
+.datepicker table tr td.active:active,
+.datepicker table tr td.active:hover:active,
+.datepicker table tr td.active.disabled:active,
+.datepicker table tr td.active.disabled:hover:active,
+.datepicker table tr td.active.active,
+.datepicker table tr td.active:hover.active,
+.datepicker table tr td.active.disabled.active,
+.datepicker table tr td.active.disabled:hover.active {
+  background-image: linear-gradient(to bottom, #160347, #160347);
+}

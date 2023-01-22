@@ -32,7 +32,7 @@ SECRET_KEY = secrets['KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 
@@ -143,8 +143,7 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-# Following settings only make sense on production and may break development environments.
-
+STATIC_ROOT =  os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
