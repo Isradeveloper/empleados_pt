@@ -1,0 +1,101 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Listar empleados
+{% endblock title %} {% block body %} {% include 'includes/nav.html' %}
+
+
+{% block extra %}
+<script>
+  $(document).ready(function () {
+    var table = $("#empleados").DataTable({
+      language: {
+        url: "//cdn.datatables.net/plug-ins/1.13.1/i18n/es-ES.json",
+      },
+      paging: true,
+      pageLength: 10,
+      lengthChange: true,
+      autoWidth: true,
+      searching: true,
+      bInfo: true,
+      bSort: true,
+      orderCellsTop: true,
+      fixedHeader: true,
+      columnDefs: [{ orderable: false, targets: 7 }],
+      responsive: true,
+    });
+  });
+</script>
+{% endblock extra %}
+<div class="contenedor-list d-flex justify-content-center align-items-center flex-column">
+  <div class="container-fluid card animate__animated animate__backInLeft">
+    <div class="table-responsive">
+      <table class="table table-striped text-center bordered" id="empleados">
+        <thead>
+          <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">Nombres</th>
+            <th class="text-center">Apellidos</th>
+            <th class="text-center">Cédula</th>
+            <th class="text-center">Correo eléctronico</th>
+            <th class="text-center">Télefono</th>
+            <th class="text-center">Fecha de nacimiento</th>
+            <th class="text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for empleado in empleados %}
+          <tr>
+            <td>{{empleado.id}}</td>
+            <td>{{empleado.nombres}}</td>
+            <td>{{empleado.apellidos}}</td>
+            <td>{{empleado.cedula}}</td>
+            <td>{{empleado.email}}</td>
+            <td>{{empleado.telefono}}</td>
+            <td>{{empleado.fecha_nacimiento}}</td>
+            <td>
+              <div
+                class="d-flex justify-content-center align-items-center gap-2"
+              >
+                <a
+                  id="edit_modal"
+                  class="btn btn-primary"
+                  href="{% url 'empleados:editar-empleado' empleado.id %}"
+                >
+                  <svg
+                    id="edit-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="bi bi-pencil-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"
+                    />
+                  </svg>
+                </a>
+                <a class="btn btn-danger" href="{% url 'empleados:eliminar-empleado' empleado.id %}">
+                  <svg id="delete-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="bi bi-trash-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <a class="add" href="{% url 'empleados:agregar-empleado' %}">
+    <svg xmlns="http://www.w3.org/2000/svg" id="add-icon" class="bi bi-plus-lg" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+    </svg>
+  </a>
+</div>
+
+<div class="modal fade" id="visualizar" role="dialog"></div>
+
+{% endblock body %}

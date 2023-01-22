@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block title %} Editar usuario {% endblock title %}
+{% block extra %}
+<script>
+  $(".errorlist").addClass("alert alert-danger");
+
+  const enviarform = () => {
+    $('#enviar').click()
+  }
+
+</script>
+{% endblock extra %} {% block body %}
+<div class="contenedor-forms">
+  <div class="container d-flex justify-content-center align-items-center" style="height: calc(100% - 4rem);">
+    <div class="animate__animated animate__bounceIn card w-50 p-4">
+      <div class="header mb-3">
+        <div class="titulo-main">Editar usuario</div>
+      </div>
+        <form method="post"> {% csrf_token %}
+        {{form}}
+        <button type="submit" id="enviar" class="d-none"></button>
+      </form>
+      <hr>
+      <div class="d-flex justify-content-center align-items-center gap-2 flex-column w-100">
+        <button type="submit" class="btn purple w-100" onclick="(enviarform())">Editar</button>
+        <a type="submit" class="btn purple-n w-100" href="{% url 'home:panel' %}">Cancelar</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock body %}
