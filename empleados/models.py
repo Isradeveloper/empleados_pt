@@ -8,10 +8,10 @@ class Empleado(models.Model):
   # TODO: Define fields here
   nombres = models.CharField(max_length=50, blank=False)
   apellidos = models.CharField(max_length=50, blank=False)
-  cedula = models.IntegerField(blank=False)
+  cedula = models.TextField(blank=False, max_length=10)
   email = models.EmailField(blank=False, unique=True)
   fecha_nacimiento = models.DateField(auto_now=False, auto_now_add=False, blank=False)
-  telefono = models.IntegerField(blank=False)
+  telefono = models.TextField(blank=False, max_length=10)
 
   class Meta:
     """Meta definition for Empleado."""

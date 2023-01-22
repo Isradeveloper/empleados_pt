@@ -30,7 +30,8 @@ body {
 .contenedor-login {
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(160deg, #1104599a 0%, #03055e 100%) ,url('https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background-image: linear-gradient(160deg, #1104599a 0%, #03055e 100%),
+    url("https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -39,7 +40,8 @@ body {
 .contenedor-forms {
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(160deg, #1104599a 0%, #03055e 100%) ,url('https://images.pexels.com/photos/955389/pexels-photo-955389.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background-image: linear-gradient(160deg, #1104599a 0%, #03055e 100%),
+    url("https://images.pexels.com/photos/955389/pexels-photo-955389.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -49,7 +51,8 @@ body {
   padding: 2rem;
   width: 100%;
   height: calc(100% - 4rem);
-  background-image: linear-gradient(160deg, #1104599a 0%, #03055e 100%) ,url('https://images.pexels.com/photos/164686/pexels-photo-164686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background-image: linear-gradient(160deg, #1104599a 0%, #03055e 100%),
+    url("https://images.pexels.com/photos/164686/pexels-photo-164686.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&dpr=1");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -163,7 +166,7 @@ label {
 
 .dropdown-item:focus {
   background-color: #160347;
-  }
+}
 
 .contenedor-forms .card {
   color: #1b045d;
@@ -210,7 +213,7 @@ label {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  transition: all .4s;
+  transition: all 0.4s;
 }
 
 .add:hover {
@@ -237,7 +240,18 @@ label {
   padding: 0.5rem;
 }
 
+.input-group-addon.input-group-append.input-group-text {
+  background-color: #160347;
+  color: whitesmoke;
+}
 
-
-
-
+.datepicker table tr td.active:active,
+.datepicker table tr td.active:hover:active,
+.datepicker table tr td.active.disabled:active,
+.datepicker table tr td.active.disabled:hover:active,
+.datepicker table tr td.active.active,
+.datepicker table tr td.active:hover.active,
+.datepicker table tr td.active.disabled.active,
+.datepicker table tr td.active.disabled:hover.active {
+  background-image: linear-gradient(to bottom, #160347, #160347);
+}

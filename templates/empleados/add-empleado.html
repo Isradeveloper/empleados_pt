@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block title %} Editar empleado {% endblock title %}
+{% extends 'base.html' %} {% block title %} Agregar empleado {% endblock title %}
 {% block extra %}
 <script>
   $(".errorlist").addClass("alert alert-danger");
@@ -9,13 +9,15 @@
   }
 
 </script>
-{% endblock extra %} {% block body %} 
+{% endblock extra %} {% block formulario %}
+
 <div class="contenedor-forms">
   <div class="container d-flex justify-content-center align-items-center" style="height: calc(100% - 4rem);">
-    <div class="animate__animated animate__backInLeft card w-50 p-4">
+    <div class="animate__animated animate__bounceIn card w-50 p-4">
       <div class="header mb-3">
         <div class="titulo-main">Agregar empleado</div>
       </div>
+      {{ form.media }}
         <form method="post"> {% csrf_token %}
         {{form}}
         <button type="submit" id="enviar" class="d-none"></button>
@@ -28,4 +30,4 @@
     </div>
   </div>
 </div>
-{% endblock body %}
+{% endblock formulario %}
