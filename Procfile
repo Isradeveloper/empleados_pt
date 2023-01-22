@@ -1,0 +1,1 @@
+web: gunicorn tecnoglasscrud.wsgi --log-file -
