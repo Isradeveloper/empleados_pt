@@ -14,24 +14,23 @@ from pathlib import Path
 
 import json
 import os
-import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# with open(os.path.join(BASE_DIR, 'tecnoglasscrud/settings.json')) as f:
-#     secrets = json.loads(f.read())
+with open(os.path.join(BASE_DIR, 'tecnoglasscrud/settings.json')) as f:
+    secrets = json.loads(f.read())
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
+SECRET_KEY = secrets['KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'RENDER' not in os.environ
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -69,7 +68,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'tecnoglasscrud.urls'
@@ -97,10 +95,14 @@ WSGI_APPLICATION = 'tecnoglasscrud.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://postgres:postgres@localhost/postgres',
-        conn_max_age=600
-    )
+    'default': {
+		'ENGINE': 'django.db.backends.postgresql_psycopg2',
+		'NAME' : secrets['NAME_DB'],
+		'USER' : secrets['USER_DB'],
+		'PASSWORD' : secrets['PASSWORD_DB'],
+		'HOST' : secrets['HOST_DB'],
+		'PORT' : secrets['PORT_DB'],
+	}
 }
 
 
@@ -142,12 +144,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 # Following settings only make sense on production and may break development environments.
-if not DEBUG:    # Tell Django to copy statics to the `staticfiles` directory
-    # in your application directory on Render.
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    # Turn on WhiteNoise storage backend that takes care of compressing static files
-    # and creating unique names for each version so they can safely be cached forever.
-    STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
