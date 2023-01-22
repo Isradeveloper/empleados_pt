@@ -14,6 +14,7 @@ from pathlib import Path
 
 import json
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -96,14 +97,10 @@ WSGI_APPLICATION = 'tecnoglasscrud.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': secrets['NAME_DB'],
-        'USER': secrets['USER_DB'],
-        'PASSWORD': secrets['PASSWORD_DB'],
-        'HOST': secrets['HOST_DB'],
-        'PORT': secrets['PORT_DB'],
-    }
+    'default': dj_database_url.config(
+        default='postgresql://postgres:postgres@localhost/postgres',
+        conn_max_age=600
+    )
 }
 
 
