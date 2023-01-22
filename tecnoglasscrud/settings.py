@@ -93,11 +93,11 @@ WSGI_APPLICATION = 'tecnoglasscrud.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'bd_project_empleados',
-        'USER': 'postgres',
-        'PASSWORD': '1014',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': secrets['NAME_DB'],
+        'USER': secrets['USER_DB'],
+        'PASSWORD': secrets['PASSWORD_DB'],
+        'HOST': secrets['HOST_DB'],
+        'PORT': secrets['PORT_DB'],
     }
 }
 
@@ -127,7 +127,7 @@ AUTH_USER_MODEL = 'users.User'
 
 LANGUAGE_CODE = 'es-es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'UTC-5'
 
 USE_I18N = True
 
@@ -144,13 +144,6 @@ STATICFILES_DIRS = [
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
-
-# # Email settings
-# EMAIL_USE_TLS = True
-# EMAIL_HOST = 'smtp@gmail.com'
-# EMAIL_HOST_USER = secrets['EMAIL']
-# EMAIL_HOST_PASSWORD = secrets['EMAIL_PASSWORD']
-# EMAIL_PORT = 587
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
