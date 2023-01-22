@@ -20,8 +20,8 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-with open(os.path.join(BASE_DIR, 'tecnoglasscrud/settings.json')) as f:
-    secrets = json.loads(f.read())
+# with open(os.path.join(BASE_DIR, 'tecnoglasscrud/settings.json')) as f:
+#     secrets = json.loads(f.read())
 
 
 # Quick-start development settings - unsuitable for production
